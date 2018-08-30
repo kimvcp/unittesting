@@ -1,6 +1,7 @@
-.idea/
-*.classpath
 *.class
-.settings/
-*.iml
+bin/
+build/
+out/
+# eclipse junk
+.settings
 .project/
