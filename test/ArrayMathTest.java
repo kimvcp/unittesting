@@ -11,7 +11,6 @@ public class ArrayMathTest {
 	/** A small tolerance for floating point round-off (precision) error. */
 	static final double TOL = 1.0E-6;
 	static final int LENGTH = 1_000_000;
-	static final int DEGREE = 360;
 	private Random rand = new Random();
 
 	@Test
