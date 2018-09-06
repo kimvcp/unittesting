@@ -6,6 +6,8 @@ import org.junit.Test;
 
 /**
  * Test methods in the ArrayMath class.
+ * 
+ * @author Kittin Vatabutr
  */
 public class ArrayMathTest {
 	/** A small tolerance for floating point round-off (precision) error. */
