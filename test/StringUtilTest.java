@@ -5,6 +5,8 @@ import org.junit.Test;
 
 /**
  * Tests of the StringUtil methods.
+ * 
+ * @author Ingkharat Jangchud
  */
 public class StringUtilTest {
 
@@ -17,6 +19,23 @@ public class StringUtilTest {
 		String[] fruit = {"Apple", "Banana", "Grapes"};
 		assertEquals(0, StringUtil.indexOf("Apple", fruit));
 	}
+	
+	@Test
+	public void testEmptyArray() {
+		String[] fruit = {};
+		assertEquals(-1, StringUtil.indexOf("Apple", fruit));
+	}
+	@Test
+	public void testElementnotFound() {
+		String[] fruit = {"Apple", "Banana", "Grapes"};
+		assertEquals(-1, StringUtil.indexOf("Mango", fruit));
+	}
+	@Test
+	public void testMorethanOne() {
+		String[] fruit = {"Apple", "Banana", "Grapes" , "Apple"};
+		assertEquals(0, StringUtil.indexOf("Apple", fruit));
+	}
+	
+	
 
-	//TODO write more tests. Test other cases.
 }

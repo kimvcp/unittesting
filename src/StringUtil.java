@@ -1,10 +1,14 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
  * Some utility methods for Strings.
+ * 
+ * @author Ingkharat Jangchud
  */
 public class StringUtil {
+	
 	/**
 	 * Find the index of a String (arg) in an array of Strings.
 	 * @param arg is the string to search for
@@ -17,5 +21,6 @@ public class StringUtil {
 			if (array[k].equals(arg)) return k;
 		}
 		return -1;
+		
 	}
 }
