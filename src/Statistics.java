@@ -1,41 +1,53 @@
 import java.util.Arrays;
 
 /**
- * Methods for computing some common statistics,
- * such as average, variance, and correlation.
+ * Methods for computing some common statistics, such as average, variance, and
+ * correlation.
+ * 
+ * @author Vichaphol Thamsuthikul
  */
 public class Statistics {
 
 	/**
 	 * Compute the arithmetic average of an array of numbers.
-	 * @param x is array to compute average of.  Must not be null.
+	 * 
+	 * @param x is array to compute average of. Must not be null.
 	 * @return the arithmetic average of values in x, or 0 if x is empty.
+	 * @throws IllegalArgumentException if x is empty.
 	 */
 	public static double average(double[] x) {
-		// Some fun: sum using a Stream instead of a loop.
+		int size = x.length;
+		if (size == 0)
+			throw new IllegalArgumentException("The array must not be empty");
 		double sum = Arrays.stream(x).sum();
-		return sum/x.length;
+		return sum / x.length;
 	}
-	
+
 	/**
-	 * Compute the variance of values in an array.
-	 * Variance uses the formula sum(x[k]*x[k])/length(x) - average(x)^2.
+	 * Compute the variance of values in an array. Variance uses the formula
+	 * sum(x[k]*x[k])/length(x) - average(x)^2.
 	 * 
 	 * @param x is the array of values. Must contain at least 1 element.
 	 * @return the variance of x
 	 * @throws IllegalArgumentException if x is empty
 	 */
 	public static double variance(double[] x) {
-		//TODO write the code
-		return 0;
+		int size = x.length;
+		if (size == 0)
+			throw new IllegalArgumentException("The array must not be empty");
+		double sum = 0;
+		for (int i = 0; i < size; i++) {
+			sum += x[i] * x[i];
+		}
+
+		return sum / size - Math.pow(average(x), 2);
 	}
-	
+
 	/**
-	 * Compute the covariance between arrays x and y.
-	 * The covariance is defined by
+	 * Compute the covariance between arrays x and y. The covariance is defined by
 	 * 
-	 * sum[ (x[k] - average(x)) * (y[k] - average(y)) ]/n
-	 * where n is number of elements in the arrays.
+	 * sum[ (x[k] - average(x)) * (y[k] - average(y)) ]/n where n is number of
+	 * elements in the arrays.
 	 * 
 	 * But it is more efficient to compute using the equivalent formula:
 	 * 
@@ -44,13 +56,23 @@ public class Statistics {
 	 * Note that if x == y, this is the variance.
 	 * 
 	 * @param x is the first array of values.
-	 * @param y is the second array of values
+	 * @param y is the second array of values.
 	 * @return the covariance between x and y
-	 * @throws IllegalArgumentException if arrays are not same length or length is 0.
+	 * @throws IllegalArgumentException if arrays are not same length or length is
+	 *                                  0.
 	 */
 	public static double covariance(double[] x, double[] y) {
-		//TODO write the code
-		return 0;
+		int sizeX = x.length;
+		int sizeY = y.length;
+		if (sizeX == 0 || sizeY == 0)
+			throw new IllegalArgumentException("The array must not be empty.");
+		if (sizeX != sizeY)
+			throw new IllegalArgumentException("The array must be same length.");
+		double sum = 0;
+		for (int i = 0; i < sizeX; i++) {
+			sum += ((x[i] - average(x)) * (y[i] - average(y)));
+		}
+		return sum / sizeX;
 	}
-	
+
 }
