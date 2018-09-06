@@ -10,6 +10,8 @@ import org.junit.Test;
 public class ArrayMathTest {
 	/** A small tolerance for floating point round-off (precision) error. */
 	static final double TOL = 1.0E-6;
+	static final int LENGTH = 1_000_000;
+	private Random rand = new Random();
 
 	@Test
 	public void testDotProductTinyVectors() {
@@ -25,22 +27,25 @@ public class ArrayMathTest {
 		y = new double[] { };
 		assertEquals( 0.0, ArrayMath.dotProduct(x, y), TOL);
 	}
-	
-	//TODO Add at least one test for the "typical" case: vectors larger than 1.
-	// Please don't copy my tests. You don't need random numbers (not a good idea
-	// because test results may not be reproducable).
+	@Test
+	public void testDotProductTypicalVectors(){
+		// vector of length two
+		double[] x = {1,5.2}; 
+		double[] y = {2.4,1};
+		double expected = x[0]*y[0] + x[1]*y[1];
+		assertEquals( expected, ArrayMath.dotProduct(x, y), TOL);
+		assertEquals( expected, ArrayMath.dotProduct(y, x), TOL);
+	}
 
 	@Test
 	public void testDotProductHugeVectors() {
-		int len = 1_000_000;
-		double[] x = new double[len];
-		double[] y = new double[len];
-		Random rand = new Random();
+		double[] x = new double[LENGTH];
+		double[] y = new double[LENGTH];
 		double product = 0.0;
-		for(int k=0; k<len; k++) {
+		for(int k=0; k<LENGTH; k++) {
 			// to avoid overflowing the product using floats for elements
-			double xk = (double) rand.nextFloat();
-			double yk = (double) rand.nextFloat();
+			double xk = rand.nextDouble();
+			double yk = rand.nextDouble();
 			x[k] = xk;
 			y[k] = yk;
 			product += xk*yk;

@@ -1,7 +1,7 @@
 /**
  * Some linear algebra methods, for testing.
  * 
- * @author Jim
+ * @author Kittin Vatabutr
  *
  */
 public class ArrayMath {
@@ -23,6 +23,5 @@ public class ArrayMath {
 			product += x[k]*y[k];
 		}
 		return product;
-	}
-	
+	}	
 }
